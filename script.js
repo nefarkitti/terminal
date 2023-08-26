@@ -9,10 +9,11 @@ path.innerHTML = dir
 
 let files = [
   {"name": "shopping.txt", "contents": "eggs<br>milk<br>monster"},
+  {"name": "MANUAL", "contents": "Welcome user! This instruction manual will teach you everything there is to know about th1¥ÞåNY4^1¾slç¾˜AsÐNþº•A2{W.¡å½…iÖ}-Š¸õ’Åw=<9Ìbnç¼æ8«OãvúŽå¬fmûºózœ»Ê:ÖÉnà·È­|ðp»þÊÎóE áðÖlÚ¥!§Ù¹ 8—äÊ5Õ¯DtM7Ž¥@¢÷:¨Ó¤˜ãÚEìˆ+Klè}Žœ×¤(•Ü_>1¶}|íeùŽèoý‰ ÄŒòäàþTBÉ¡Mw[eýc:0yp>ùM5¢üõæ•«öÑd’b»lÀÙ7˜èÆ^àS…Ó:fU©Ö‰èÃ|VÈö	*xõjfºÉÆ¦Qv)õ¬:§tñ9úZð¯{Þæ|qÇf±æž#åêå³Tàä8CÃ£SvÝÖ:È•hŽ¶Jæ%GŠûˆ—¢¾“â¥~ÇÔ¿¼¶ÂšDÐÑ¤íxB^†8kL°e	´\ÄõÈÃJ÷P´Ò–83å|ÈWäç½älÐdir Œà*C„–‰„Ô\˜sùËŽxêBÌXFT.ÇýÒ’m‰!D”˜¸÷(eq»glÆ³z‡t:¥ænÕîÊ§¡­®\ßÛßÙ=éò¡•f­ƒ¤hÜ,ãÀ:™±rÈbÂGIŒ{øÑ¦Ò,]Îý:(a'‘]ñ—©”:µÕ¿ºú³ «½SÜ³ˆ1ŸÓÅLé‰ìñH“kS“µñ;Ó%§¯aÊwB†…}ÎÏ¼§­²)U,LL|`ÙSÉÑvš½!Iš;ÕVb¾{Ÿ K¡²Ñå„2°1Úg±¥ø[V ùå›5åŸað*ÞAÙ™Ôï9M5Hî«TzV–ë±©Ò–ŸîTŸUâusá7¼‚•ëþÆh!µê@][­T^V@¡¬>ë(î[©½Ga/xâÍ"},
   {"name": "readme.txt", "contents": "Waiting for something to happen?"},
   {"name": "LICENSE", "contents": `MIT License<br><br>
 
-  Copyright (c) 2023 nefi<br><br>
+  Copyright (c) 2023 ████<br><br>
   
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +32,7 @@ let files = [
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.`},
-  {"name": "me.txt", "contents": "silly little furry<br>i code a little<br>just a little though "}
+  {"name": "neffi.txt", "contents": "silly little furry<br>she codes a little<br>just a little though "}
 ]
 
 function updatePath(fil) {
@@ -148,6 +149,7 @@ function cmd(lol) {
     createLine("RM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deletes the given file")
     createLine("LS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lists all files and directories in the directory")
     createLine("CAT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;opens a file for reading")
+    createLine("CLR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clears the terminal")
     createLine("ADD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adds X and Y")
     createLine("SUB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;subtracts X and Y")
     createLine("MUL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;multiplies X and Y")
@@ -172,9 +174,13 @@ function cmd(lol) {
       createLine(`${file.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${toDisplay}${ending}`)
     }
   }
+  if (args[0].toLowerCase() == "clr") {
+    location.reload()
+  }
   if (args[0].toLowerCase() == "rm") {
     if (!args[1]) return createLine("Please provide a file name!")
     let wantedFile = args[1]
+    if (args[1] == "/") return window.close();
     if (findFile(wantedFile) == undefined) return createLine(`Could not find '${wantedFile}'`);
     let toread = files[findFile(wantedFile)]
     files.splice(findFile(wantedFile), 1)
