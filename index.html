@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
+    <script src="script.js" defer></script>
+    <style>
+        @font-face {
+            font-family: Classic Console Neue;
+            src: url(clacon2.ttf);
+        }
+        body {
+            background-color: rgb(8, 8, 8);
+            color: white;
+            font-family: "Classic Console Neue";
+            font-size: 20px;
+            text-shadow: 0 0 2px #fff;
+        }
+        .screen {
+            background-color: black;
+            width: 60%;
+            height: 80%;
+            position: absolute;
+            top:0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+    
+            margin: auto;
+            /* overflow-y: scroll; */
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+        .lines {
+            float: left;
+            clear: both;
+            width: 100%;
+        }
+        .line {
+            float:left;
+            clear: both;
+            word-wrap:normal;
+        }
+        .line::selection {
+            background-color: white;
+            color: black;
+        }
+        .userinput {
+            display: inline-block;
+            height: 20px;
+            max-width: 100%;
+            word-wrap: break-word;
+            display: contents;
+        }
+        .caret {
+            height: 20px;
+            width: 9px;
+            display: inline-block;
+            vertical-align: text-bottom;
+            background-color: white;
+        }
+        .pink {
+            color: rgb(255, 129, 247);
+            text-shadow: 0 0 2px rgb(255, 129, 247);
+        }
+        .pink::selection {
+            background-color: rgb(255, 129, 247);
+            color: white;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <truecenter>
+        <div class="screen">
+            <div class="lines" id="lines">
+            </div>
+            <span class="path" id="path">N:\></span><span class="userinput" id="userinput"></span><span id="caret" class="caret"></span>
+        </div>
+    </truecenter>
+</body>
+</html>
