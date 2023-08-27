@@ -330,7 +330,7 @@ function cmd(lol) {
     createLine("PING&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;does a ping!")
     createLine("NEOFETCH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;shows system info")
     createLine("MKDIR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;creates a directory")
-    createLine("TOUCH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;creates a file")
+    createLine("MK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;creates a file")
     createLine("RM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deletes the given file")
     createLine("RMDIR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deletes the given directory")
     createLine("LS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lists all files and directories in the directory")
@@ -360,9 +360,9 @@ function cmd(lol) {
       currentDir = currentDir.contents[dirName];
     }
   }
-  if (args[0].toLowerCase() == "touch") {
+  if (args[0].toLowerCase() == "mk") {
     if (!args[1]) return createLine("Please provide a file name!")
-    const path = args[1];
+    const path = args.splice(1).join(" ");
     const fileParts = path.split("/");
     const fileName = fileParts.pop();
     const dirPath = fileParts.join("/");
@@ -377,7 +377,8 @@ function cmd(lol) {
         currentDir = currentDir.contents[dirName];
       }
     }
-
+    console.log(fileName)
+    console.log(fileParts)
     createFile(fileName, "");
   }
   if (args[0].toLowerCase() == "cd") {
